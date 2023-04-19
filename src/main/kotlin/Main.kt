@@ -1,15 +1,15 @@
 fun main(args: Array<String>) {
-    println(agoToText(3600u))
+    println(agoToText(60u))
 }
 
 fun agoToText(seconds: UInt) = when {
     seconds <= 60u -> "был(а) только что"
-    seconds in 61u .. 3600u -> {
+    seconds in 61u .. 3_600u -> {
         val minutes = seconds / 60u
         "был(а) $minutes ${minuteToString(minutes)} назад"
     }
 
-    seconds in  3601u .. 86_400u -> {
+    seconds in  3_601u .. 86_400u -> {
         val hours = seconds / 3600U
         "был(а) $hours ${hoursToString(hours)} назад"
     }
