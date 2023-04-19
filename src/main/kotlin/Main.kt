@@ -1,21 +1,21 @@
 fun main(args: Array<String>) {
-    println(agoToText(60000u))
+    println(agoToText(3600u))
 }
 
 fun agoToText(seconds: UInt) = when {
     seconds <= 60u -> "был(а) только что"
-    seconds > 60u && seconds <= 3600u -> {
-        val minutes = seconds / 60U
+    seconds in 61u .. 3600u -> {
+        val minutes = seconds / 60u
         "был(а) $minutes ${minuteToString(minutes)} назад"
     }
 
-    seconds > 3601u && seconds <= 86400u -> {
+    seconds in  3601u .. 86_400u -> {
         val hours = seconds / 3600U
         "был(а) $hours ${hoursToString(hours)} назад"
     }
 
-    seconds > 86401u && seconds <= 172800u -> "был(а) вчера"
-    seconds > 172801u && seconds <= 259200u -> "был(а) позавчера"
+    seconds in 86_401u..172_800u -> "был(а) вчера"
+    seconds in 172_801u..259_200u -> "был(а) позавчера"
     else -> "был(а) давно"
 }
 
